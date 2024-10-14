@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Communication and Networks</title>
+    <!-- Inline CSS -->
+    <style>
+        /* General body styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+        }
+
+        /* Header bar styling */
+        .header-bar {
+            width: 100%; /* Full width */
+            background-color: #007b84; /* Blue background color */
+            height: 50px; /* Height of the header bar */
+            position: fixed; /* Keep it fixed at the top */
+            top: 0; /* Align to the top of the page */
+            z-index: 1000; /* Ensures the bar is on top */
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            width: 300px; /* Sidebar width */
+            height: calc(100vh - 50px); /* Full height minus the header */
+            background-color: #f5fbfc; /* Light blue/green color */
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            position: fixed; /* Keep sidebar fixed */
+            top: 50px; /* Position below header */
+            left: 0; /* Align to the left */
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            color: #061731; /* Text color */
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: x-large;
+            margin: 0; /* Remove margin */
+            background-color: #e6f1f150; /* Background for topic */
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        /* Increase font size for list items */
+        .content-section ul li {
+            font-size: 20px; /* Set the desired font size */
+            line-height: 1.5; /* Optional: Add line-height for better spacing */
+        }
+
+        /* Dropdown button style with caret */
+        .sidebar ul li a {
+            display: block;
+            color: #333;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Caret icon down for closed dropdown */
+        .dropdown-btn::after {
+            content: " ▼"; /* Downward caret */
+            font-size: 14px;
+            float: right;
+            transition: transform 0.3s ease; /* Add transition for smooth effect */
+        }
+
+        /* Caret icon up for open dropdown */
+        .dropdown-btn.active::after {
+            content: " ▲"; /* Upward caret */
+            transform: rotate(180deg); /* Rotate the caret when active */
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #007b84; /* Dark green/blue hover effect */
+            color: white;
+        }
+
+        .dropdown-content {
+            display: none;
+            background-color: #e6f1f150;
+            list-style: none;
+            padding-left: 20px;
+            font-size: medium;
+        }
+
+        .dropdown-content a {
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+            display: block;
+            font-size: 16px; /* Smaller font size for sub-items */
+        }
+
+        .dropdown-content a:hover {
+            background-color: #007b84; /* Hover effect for sub-items */
+            color: white;
+        }
+
+        /* Main content styling */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            margin-left: 320px; /* Leave space for sidebar */
+            padding-top: 20px; /* Add padding at the top */
+        }
+
+        /* Header container */
+        .header-container {
+            text-align: center;
+            padding: 40px 0; /* Reduced padding for closer spacing */
+            width: 100%;
+            position: relative; /* Relative position for stacking */
+        }
+
+        /* Main title styling (darker color) */
+        h1 {
+            font-size: 45px;
+            margin: 10;
+            color: #222; /* Darker color */
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 40px;
+        }
+
+        /* Subtitle styling (lighter color) */
+        h2 {
+            font-size: 35px;
+            margin-top: 10px; /* Reduced margin for closer spacing */
+            margin-bottom: 20px; /* Optional: adjust bottom margin as needed */
+            color: #666; /* Lighter color */
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        h3 {
+            font-size: xx-large;
+            margin-top: 10px;
+            color: #061731;
+            font-family: 'Times New Roman', Times, serif;
+            margin-left: 20px; /* Add left margin for spacing from sidebar */
+        }
+
+        /* Additional content styling */
+        .content-section p {
+            font-size: x-large; /* Large font size */
+            font-family: 'Times New Roman', Times, serif; /* Set font style */
+            margin-top: 10px; /* Margin for spacing */
+            margin-left: 20px; /* Add left margin for spacing from sidebar */
+            line-height: 40px;
+        }
+
+        .content-section ul li {
+            font-size: x-large; /* Large font size */
+            font-family: 'Times New Roman', Times, serif; /* Set font style */
+            margin-top: 10px; /* Margin for spacing */
+            margin-left: 20px; /* Add left margin for spacing from sidebar */
+        }
+
+        /* Center the image styling */
+        .center-image {
+            display: block; /* Make the image a block element */
+            margin: 20px auto; /* Center the image with auto margins */
+            max-width: 50%; /* Optional: Set a maximum width */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header bar at the top -->
+    <div class="header-bar"></div>
+
+    <!-- Sidebar menu -->
+    <div class="sidebar">
+        <h2>List of Topics</h2>
+        <ul>
+            <li>
+                <a href="#" class="dropdown-btn">Parallel and Serial Communication</a>
+                <ul class="dropdown-content">
+                    <li><a href="parallel_communication.html">Parallel Communication</a></li>
+                    <li><a href="Serial_Communication.html">Serial Communication</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="dropdown-btn">Asynchronous, Synchronous & Isochronous Communication</a>
+                <ul class="dropdown-content">
+                    <li><a href="Asynchronus.html">Asynchronous Communication</a></li>
+                    <li><a href="Synchronus.html">Synchronous Communication</a></li>
+                    <li><a href="Isochronus.html">Isochronous Communication</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="dropdown-btn">Simplex, Half-Duplex and Full-Duplex Communication</a>
+                <ul class="dropdown-content">
+                    <li><a href="Simplex.html">Simplex Communication</a></li>
+                    <li><a href="Half.html">Half-duplex Communication</a></li>
+                    <li><a href="full.html">Full-duplex Communication</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="multi.html">Multiplexing and Demultiplexing</a>
+                <a href="#" class="dropdown-btn">Multiplexing and Demultiplexing</a>
+
+                <ul class="dropdown-content">
+                    <li><a href="types.html">Types of Multiplexing</a></li>   
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="dropdown-btn">Transmission Errors: Detection and Correction</a>
+                <ul class="dropdown-content">
+                    <li><a href="error.html">Error Classification</a></li>  
+                    <li><a href="error_types.html">Types of Errors</a></li>   
+                    <li><a href="det.html">Error Detection</a></li>   
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <!-- Main content including the header title -->
+    <div class="main-content">
+        <div class="header-container">
+            <h1>Data Communication and Networks</h1>
+            <h2>Unit 3: Modes of Data Transmission and Multiplexing</h2>
+        </div>
+
+        <!-- Introduction content section -->
+        <div class="content-section">
+            <h3>Modes of Data Transmission :</h3>
+            <p>Digital data can be transmitted in a number of ways from the source to the destination. These modes of data transmission can be outlined as follows:</p>
+            <ul>
+                <li>Parallel and Serial Communication</li>
+                <li>Asynchronous, Synchronous and Isochronous Communication</li>
+                <li>Simplex, Half-duplex and Full-duplex Communication</li>
+            </ul>
+            <img src="img/f" alt="Description of Image" class="center-image" height="2000px" width="2000px"> <!-- Centered Image -->
+        </div>
+    </div>
+
+    <!-- JavaScript for dropdown functionality -->
+    <script>
+        // Get all dropdown buttons
+        const dropdownButtons = document.querySelectorAll('.dropdown-btn');
+
+        dropdownButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Toggle the active class on the clicked button
+                this.classList.toggle('active');
+
+                // Get the associated dropdown content
+                const dropdownContent = this.nextElementSibling;
+
+                // Toggle the display property of the dropdown content
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

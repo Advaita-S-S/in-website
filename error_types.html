@@ -1,0 +1,74 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TYPES OF ERRORS</title>
+    <style>
+        body {
+            font-family:'Times New Roman', Times, serif;
+            padding: 20px;
+            font-size: x-large;
+            line-height: 1.5;
+        }
+
+        h1 {
+            color: #061731;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: xx-large;
+
+        }
+
+        p {
+            line-height: 1.5;
+        }
+        .center-image {
+            display: block; /* Make the image a block element */
+            margin: 20px auto; /* Center the image with auto margins */
+            max-width: 50%; /* Optional: Set a maximum width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        /* Optional: Add styles as needed */
+    </style>
+</head>
+<body>
+    <h1>TYPES OF ERRORS :</h1>
+    <p>
+        If the signal is carrying binary data, there can
+be two types of errors, viz., single-bit errors
+and burst errors. This is shown in Fig. 4.2. In
+a single-bit error, a bit value of 0 changes to 1
+or vice versa. In a burst error, multiple bits of
+a binary value are changed.
+
+    </p>
+    <figure>
+        <img src="img/d.png" alt="  "  class="center-image" height="500px" width="500px">
+    </figure>
+
+
+<p>
+    As we mentioned, in single-bit errors,
+a single bit of the data unit changes. Thus,
+effectively, either a 0 bit changes to 1, or a 1
+bit changes to 0. Single-bit errors are more likely in the case of parallel transmission because it is
+likely that one of the eight wires carrying the bits has become noisy, resulting in corruption of a
+single bit for each byte. This can be a case of parallel transmission between the CPU and the memory
+inside a computer. In case of serial transmission, the duration of noise is usually longer than that
+of a single bit; hence the chances of corrupting only a single bit are less.
+</p>
+<p>
+    In contrast, a burst changes at least two bits during data transmission because of errors. Note
+that burst errors can change any two or more bits in a transmission. These bits need not necessarily
+be adjacent bits. Burst errors are more likely in serial transmission, because the duration of noise
+is longer, which causes multiple bits to be corrupted.
+</p>
+
+</body>
+</html>
+
+

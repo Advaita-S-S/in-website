@@ -1,0 +1,71 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Half Duplex Communication</title>
+    <style>
+        body {
+            font-family:'Times New Roman', Times, serif;
+            padding: 20px;
+            font-size: x-large;
+            line-height: 1.5;
+        }
+
+        h1 {
+            color: #061731;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: xx-large;
+
+        }
+
+        p {
+            line-height: 1.5;
+        }
+        .center-image {
+            display: block; /* Make the image a block element */
+            margin: 20px auto; /* Center the image with auto margins */
+            max-width: 50%; /* Optional: Set a maximum width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        /* Optional: Add styles as needed */
+    </style>
+</head>
+<body>
+    <h1>Half Duplex  Communication :</h1>
+    <p>
+        Unlike what happens in the simplex mode, in case of half-duplex mode, both devices can transmit;
+        however, not at the same time. When one device is sending data, the other must only receive it, and
+        vice versa. This is conceptually similar to a street that has a single lane for vehicle traffi c. When
+        vehicles from one side are coming, the vehicles from the other side must wait. This is shown in
+        Fig. 3.13.
+
+    </p>
+    <figure>
+        <img src="img/12.png" alt="  "  class="center-image">
+    </figure>
+
+
+<p>
+    Thus, both sides take turns to send data in the case of half-duplex transmission, as shown in Fig.
+3.14. This requires a defi nite turnaround time during which the device changes from the receiving
+mode to the transmitting mode. Due to this delay, half-duplex communication is slower. However,
+it is more convenient than simplex, as both the devices can send and receive data.
+</p>
+<p>
+    Half-duplex is normally implemented by using a two-wire circuit (1 for data, 1 for ground). In
+    this case, the full bandwidth of the wire is used while sending the data in either direction. Examples
+    of half-duplex communication are conversations over a walkie-talkie.
+</p>
+
+<figure>
+    <img src="img/13.png" alt="  "  class="center-image">
+</figure>
+</body>
+</html>
+
+

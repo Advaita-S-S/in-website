@@ -1,0 +1,92 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchronus Communication</title>
+    <style>
+        body {
+            font-family:'Times New Roman', Times, serif;
+            padding: 20px;
+            font-size: x-large;
+            line-height: 1.5;
+        }
+
+        h1 {
+            color: #061731;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: xx-large;
+
+        }
+
+        p {
+            line-height: 1.5;
+        }
+        .center-image {
+            display: block; /* Make the image a block element */
+            margin: 20px auto; /* Center the image with auto margins */
+            max-width: 50%; /* Optional: Set a maximum width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        /* Optional: Add styles as needed */
+    </style>
+</head>
+<body>
+    <h1>Asynchronus Communication :</h1>
+    <p>
+        We have learnt why serial communication is preferred to parallel communication over a long
+distance. However, we have only one problem in serial communication, i.e., how do we identify
+individual bits? Essentially, the problem is that of synchronizing the sender (source) and the receiver
+(destination) as outlined above.
+    </p>
+
+<p>
+    In asynchronous communication, the time when a character will be sent cannot be predicted.
+Imagine, for instance, a data entry operator. S/he may key in a few characters, then may consult
+her/his boss, then key in a few more characters before s/he goes off for lunch. In such a scenario,
+where the data is transmitted as characters and at an unpredictable pace, we have to synchronize
+the source and destination for each character. This is called asynchronous communication.
+</p>
+<p>
+    In this case, each character is preceded with a start bit and succeeded with 1, 1.5 or 2 stop bits.
+    Figure 3.5 depicts this. Normally NRZ-L signaling is used for asynchronous transmission. According
+    to this convention, a negative voltage denotes a binary 1 bit and a positive voltage denotes a binary
+    0 bit. When the line is idle, i.e., when no character is being sent over the line, a constant negative
+    voltage signifying a binary "1"is generated. When the character is to be sent, fi rst, a bit, which is
+    bit 0 is sent. This is called start bit. A positive voltage is generated according to the convention to
+    denote this. All the 5 to 8 bits of the character according to the coding scheme used (Baudot, BCD,
+    ASCII, EBCDIC) then follow; each of which could have a 0 or 1 value. A parity bit, if used, then
+    follows. In the end, 1, 1.5 or 2 stop bits are added. The stop bit again corresponds to the idle state,
+    which is bit 1. In this context 1.5 bits only means that the signal with negative voltage denoting
+    1 is generated for 1.5 times the normal bit interval. The sender and receiver have to exactly agree
+    on the number of bits that represent a character (5, 6, 7 or 8); the parity bit scheme, if used; the bit
+    interval (or bit rate); and also what represents 0 and 1 (NRZ-L).
+</p>
+<figure>
+        <img src="img/5.png" alt="  "  class="center-image">
+    </figure>
+<p>
+    Essentially, when the start bit is recognized by the destination, it knows that a character is being
+sent. It then adjusts and starts its clock so that measurement of signal values can now start in the
+middle of every bit that follows for the expected number of bits. After all the bits in the character
+including the parity bit are measured and stored, it expects a stop bit, which is encountered if
+everything is OK. This is to recognize the bits being sent. This continues until the stop bit is received.
+At this time, the line becomes idle, and the destination clock also goes to sleep. On receiving the
+start bit, it wakes up for the duration of that character, and after the full character is received, it
+again goes to sleep until the next character arrives. This makes sense where (a) the rate at which
+the characters arrive is unpredictable and (b) the speed at which the characters are keyed in is far
+less than the speed with which they are transmitted or processed.
+</p>
+<p>
+    There has to be a proper understanding between the source and destination about the bit rate in
+bps, from which, bit interval can be computed to determine when the signal measurements have to be taken. Using this, the destination waits for the start bit and then starts its clock to measure the
+signal values to recognize the bits including the parity bits.
+</p>
+</body>
+</html>
+
+

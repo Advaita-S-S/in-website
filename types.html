@@ -1,0 +1,322 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synchronous Communication</title>
+    <style>
+        body {
+            font-family:'Times New Roman', Times, serif;
+            padding: 20px;
+            font-size: x-large;
+            line-height: 1.5;
+        }
+
+        h1 {
+            color: #061731;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: xx-large;
+
+        }
+
+        p {
+            line-height: 1.5;
+        }
+        .center-image {
+            display: block; /* Make the image a block element */
+            margin: 20px auto; /* Center the image with auto margins */
+            max-width: 50%; /* Optional: Set a maximum width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        /* Optional: Add styles as needed */
+    </style>
+</head>
+<body>
+    <h1>
+
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Synchronous Communication</title>
+            <style>
+                body {
+                    font-family:'Times New Roman', Times, serif;
+                    padding: 20px;
+                    font-size: x-large;
+                    line-height: 1.5;
+                }
+        
+                h1 {
+                    color: #061731;
+                    font-family: 'Times New Roman', Times, serif;
+                    font-size: xx-large;
+        
+                }
+        
+                p {
+                    line-height: 1.5;
+                }
+                .center-image {
+                    display: block; /* Make the image a block element */
+                    margin: 20px auto; /* Center the image with auto margins */
+                    max-width: 50%; /* Optional: Set a maximum width */
+                    height: auto; /* Maintain aspect ratio */
+                }
+        
+                /* Optional: Add styles as needed */
+            </style>
+        </head>
+        <body>
+            <h1>TYPES OF MULTIPLEXING</h1>
+<p>
+    There are basically two ways in which multiplexing and demultiplexing can be achieved. They are
+Frequency Division Multiplexing (FDM) and Time Division Multiplexing (TDM).
+</p>
+<ul>
+    <li><b> 1. Frequency Division Multiplexing (FDM) : </b></li>
+</ul>
+<p>
+   <b><i>Introduction : </i></b> 
+</p>
+<p>
+    We are familiar with this technique used in public telephones. Frequency Division Multiplexing
+(FDM) is also used in cable TV systems, where a single cable carries multiple video signals from
+different channels or stations up to your TV set. With the remote control, we essentially activate
+the electronic circuits in the television to select a specifi c frequency band or a channel. This is how we see a specifi c program on TV. The signals from other programs also actually traverse to your
+TV set on the same cable, but they lie idle at your TV set for you to choose from.
+In FDM, the medium is divided into a number of channels, each with a frequency bandwidth,
+and therefore, a data rate. Though the composite signal ultimately carried by the medium is analog,
+the input signals can be analog or digital. If the input signals are analog, multiplexers at both the
+ends are suffi cient as shown in Fig. 3.18.
+</p>
+<figure>
+    <img src="img/17.png" alt="  "  class="center-image" height="400px" width="400px">
+</figure>
+<p>
+    If the input signals are digital, such as from computers, they need to be passed through modems
+and multiplexers as shown in Fig. 3.19. Modems convert the digital signals into analog signals and
+then at the other end, convert them back into digital signals.
+</p>
+<figure>
+    <img src="img/18.png" alt="  "  class="center-image" height="500px" width="500px">
+</figure>
+<p>
+    <b><i>FDM and Analog Telephone System : </i></b> 
+ </p>
+<p>
+    FDM is very important in the context of the analog telephone system. In the analog telephone
+system, voice signals are carried over twisted copper wire pairs as analog signals from your home to the nearest exchange called last mile. There is no conversion from analog signals to their digital
+equivalents at this stage of transmission. As we have noted previously, frequencies of human voice
+that are carried by the telephone system are in the range of 0 to 4000 Hz (4 kHz). Therefore, to
+carry a single voice conversation over telephone, a bandwidth of 4 kHz is necessary and suffi cient.
+However, the capacity of the medium such as twisted wire pair or coaxial cable is far higher. That is
+where FDM comes handy in enabling multiple conversations take place over a single wire or cable.
+As we know, this is useful only in sending signals between exchanges or from a local exchange
+to a higher level exchange. At an exchange, signals from multiple sources could be combined or
+multiplexed and then sent to a higher or different exchange. At the other end, they are demultiplexed
+and sent to the appropriate destinations. We must know that in a local loop, i.e., between the user
+and the local exchange, there is only one user and therefore, multiplexing is not possible.
+</p>
+<p>
+    In order to utilize the underlying infrastructure such as transmission equipment and switches to
+the maximum possible extent, telephone companies make use of FDM. By multiplexing signals
+from lines that have lower bandwidth onto those having higher bandwidth, maximum throughput
+can be achieved. There are standards for this, such as how many smaller lines (also called channels)
+should be combined into a bigger line, what should be the data rate, etc. These standards in Europe
+and Japan are different from those in the US. However, the basic principles remain the same. As an
+example, we shall briefl y discuss the structure used by AT&T in the US, as shown in Fig. 3.20.
+</p>
+<figure>
+    <img src="img/19.png" alt="  "  class="center-image" height="500px" width="500px">
+</figure>
+<ul>
+    <li>
+        1. At the first level, 12 voice channels, each having a bandwidth of 4 KHz, are multiplexed to
+form a Group. This group has a bandwidth of 48 kHz. A question at this stage would be as
+follows: Between any two channels, should there not be some unused empty portion (called
+a guard band) provided, so that the signals of the two channels do not mingle with each
+other, causing mixing of signals, and therefore, loss of information? The answer is no. As we
+have discussed previously, the unused frequency bands of 0 to 300 Hz and 3300 to 4000 Hz
+themselves act as guard bands, and the 300 to 3300 Hz portion is used for voice traffi c. The
+FDM technique employed by AT&T has special equipment, which takes care of this issue.
+Therefore, we can say that a 48 kHz Group can carry 12 voice signals, each consisting of
+4 kHz.
+    </li>
+    <li>
+        2. At the next level, 5 such groups are multiplexed to form a Supergroup. Thus, the bandwidth
+of a Supergroup is 5 X 48 kHz = 240 kHz. In other words, a supergroup can carry 60 voice
+signals, each of a bandwidth of 4 kHz.
+    </li>
+    <li>
+        3. At the third level, 10 supergroups are multiplexed onto a channel of still higher bandwidth,
+called Mastergroup. Thus, the bandwidth of a mastergroup channel is 10 X 240 kHz = 2.52
+MHz. Thus, a mastergroup can carry 600 voice signals, each of a bandwidth of 4 kHz.
+    </li>
+    <li>
+        4. At the last level, 6 mastergroup channels are combined to form a Jumbogroup. The bandwidth
+of a jumbogroup is 6 X 2.52 MHz = 16.984 MHz. This means that a jumbogroup can carry
+3600 voice conversations.
+    </li>
+</ul>
+<ul>
+    <li><b> 2. Time Division Multiplexing (TDM) : </b></li>
+</ul>
+<p>
+    Time Division Multiplexing (TDM) is a technique used for digital transmission only. In this case,
+we do not divide the frequency bandwidth of a medium into a number of channels. We divide the
+transmission time into a number of time slices. We then allocate each time slice to a different source
+node, which wants to send some data. A node could mean a computer, a terminal or any device.
+The time slice during which a source node is sending some data, the entire bandwidth belongs to
+that source node. We know that the data rate in a medium is proportional to its bandwidth. Hence,
+the source node, which is sending some data during that time slice, can send the data at a high rate.
+However, because the total time span is divided into a number of time slices, the overall data rate
+from each source node again reduces. Therefore, the concept of a medium being divided into a
+number of channels is still a logically valid one.
+</p>
+<p>
+    It is thinkable but not practicable to allocate a large chunk of time to a source node until that
+source node completes its transmission, and then allocate another large chunk of time to the next
+source node and so on.
+However, in this case, the time slice allocated to each source would be different because the
+time is allocated to a source node until it completes transmission; and each node may want different
+amount of data to be transmitted. This philosophy may require large amount of buffers at each
+source node to hold the data when some other source node is transmitting. In addition, this method
+can be very unfair to a few source nodes as it may involve long waits or indefi nite postponement,
+if one of the source nodes grabs the medium for a very long time.
+This is the reason why the time span is divided into equal time slices. There are two ways of
+allocating the time slices to various source nodes. They are given below:
+</p>
+<ul>
+    <li>
+        Synchronous TDM, also known as TDM
+    </li>
+    <li>
+        Statistical TDM
+    </li>
+</ul>
+<p>
+<b> Synchronous TDM or TDM </b>
+</p>
+<p>
+    In the technique called synchronous TDM, also called only TDM, the time slice is allocated to a
+source node regardless of whether it wants to send some data or not. This is a simpler mechanism
+to identify at a destination node as to which data originated from which source node. This is on the
+basis of a fi xed time slot. Therefore, the position of data within the data frame specifi es its origin.
+However, it can be a very wasteful scheme, because the time slot is allotted to a source node even
+if it has nothing to send. Figure 3.21 illustrates this scheme.
+</p>
+<p>
+    A small buffer memory is associated with every source node. At any time, not all nodes may
+want to send some data. Regardless of this, the timing device in the multiplexer allocates some
+time for each node to transmit data from its buffer, and then repeats this cycle, e.g., A-B-C-D-A-B-C-D, etc., as shown in the fi gure. By the time its turn comes next, if a node wants to transmit any
+data, it will have moved a small chunk of data to its buffer. If there was no data to be transmitted,
+the buffer will be empty, but then it will still be sent, as depicted in Fig. 3.21. (Refer to node B).
+Notice that there is no addressing scheme here to identify the source of data. The position of data
+in the composite message determines the source address.
+</p>
+<figure>
+    <img src="img/20.png" alt="  "  class="center-image" height="500px" width="500px">
+</figure>
+<p>
+    <b> Statistical Time Division Multiplexing (STDM)</b>
+</p>
+<p>
+    Statistical Time Division Multiplexing (STDM) is a variation of the TDM technique. This technique
+is more intelligent. It monitors which machine or terminal is sending the data more frequently
+and in more quantity, and allocates the time slices more often to those nodes. Relatively inactive
+computers/terminals get the time slice less often, while a completely idle computer/terminal may
+not get any time slice at all. Essentially statistics is maintained about the activity of various source
+nodes and hence the name. This is shown in Fig. 3.22. In the fi gure, node B does not send any data
+at all, while node C is more active, and hence is polled more frequently.
+This allows more number of computers/terminals to be connected to the line. For instance, on
+a 9.6 Kbps line, you could connect only 8 terminals sending data at the rate of 1200 Kbps or 1.2
+Kbps using ordinary TDM. With STDM, you could connect more number of terminals, because, at
+a given time, not all terminals are normally active, and wanting to send data. This technique will
+work, so long as the number of terminals wanting to send data at any moment does not exceed 8.
+</p>
+<p>
+    It should be obvious that the position of data in the total data frames sent does not determine
+its address. In TDM, this was the case. In STDM, a time slot could be allotted to any of the nodes
+depending upon its past activity, and present requests. Therefore, in STDM, along with the chunk of
+data, some control information is sent in the data frame, which contains the addresses of both, the
+sender and the receiver as well as the number of bytes sent, etc. At the destination, another stat mux
+(a statistical multiplexer is called stat mux) captures the frame, separates out the data chunks and
+the receivers address and sends data to the appropriate destination. Here, the senders address tells the receiver (destination) from whom the data has been received. This is unlike in TDM where the
+sender was defi ned by the time slot and therefore, it was not necessary to send the senders address
+explicitly. Thus, in STDM, having to send addresses along with the actual data is an overhead, but
+then it obviated the need of sending nulls if a node did not want to send anything at all (as was the
+case with TDM). In most cases, this increases the effective throughput of the system.
+</p>
+<figure>
+    <img src="img/ab.png" alt="  "  class="center-image" height="500px" width="500px">
+</figure>
+<p>
+    <b> Statistical Time Division Multiplexing (STDM)</b>
+</p>
+<p>
+    Statistical Time Division Multiplexing (STDM) is a variation of the TDM technique. This technique
+is more intelligent. It monitors which machine or terminal is sending the data more frequently
+and in more quantity, and allocates the time slices more often to those nodes. Relatively inactive
+computers/terminals get the time slice less often, while a completely idle computer/terminal may
+not get any time slice at all. Essentially statistics is maintained about the activity of various source
+nodes and hence the name. This is shown in Fig. 3.22. In the fi gure, node B does not send any data
+at all, while node C is more active, and hence is polled more frequently.
+This allows more number of computers/terminals to be connected to the line. For instance, on
+a 9.6 Kbps line, you could connect only 8 terminals sending data at the rate of 1200 Kbps or 1.2
+Kbps using ordinary TDM. With STDM, you could connect more number of terminals, because, at
+a given time, not all terminals are normally active, and wanting to send data. This technique will
+work, so long as the number of terminals wanting to send data at any moment does not exceed 8.
+</p>
+<p>
+    its address. In TDM, this was the case. In STDM, a time slot could be allotted to any of the nodes
+depending upon its past activity, and present requests. Therefore, in STDM, along with the chunk of
+data, some control information is sent in the data frame, which contains the addresses of both, the
+sender and the receiver as well as the number of bytes sent, etc. At the destination, another stat mux
+(a statistical multiplexer is called stat mux) captures the frame, separates out the data chunks and
+the receivers address and sends data to the appropriate destination. Here, the senders address tells the receiver (destination) from whom the data has been received. This is unlike in TDM where the
+sender was defi ned by the time slot and therefore, it was not necessary to send the senders address
+explicitly. Thus, in STDM, having to send addresses along with the actual data is an overhead, but
+then it obviated the need of sending nulls if a node did not want to send anything at all (as was the
+case with TDM). In most cases, this increases the effective throughput of the system.
+</p>
+<figure>
+    <img src="img/bv.png" alt="  "  class="center-image" height="500px" width="500px">
+</figure>
+<p>
+    <b> Wavelength Division Multiplexing (WDM)</b>
+</p>
+<p>
+    If the transmission medium is not copper wire but it is optical fi ber, a variation of the basic FDM
+scheme is used. In this scheme called Wavelength Division Multiplexing (WDM), transmissions
+from multiple optical fibers are combined and sent together. In order to ensure that these
+transmissions from different optical fi bers do not overlap with each other and that they do not get
+mixed, their wavelengths are considered as the point of difference. In other words, just as in the
+case of FDM, the transmissions from various sources are combined and sent together on the basis
+of their different frequencies; here the transmissions are combined on the basis of the difference
+between the wavelengths. So, the process in brief is that transmissions from various optical fi bers
+are combined on the sender’s side. These transmissions have different wavelengths. The combined
+transmission is sent to the other side via a single and more powerful optical fi ber. At the receiver’s
+end, the individual transmissions are retrieved by fi ltering out the individual source signals on the
+basis of their wavelengths.
+</p>
+<p>
+    WDM is very similar to FDM, except that very high frequencies are used in WDM. Also, because
+it is based on optical principles and not electrical principles, it has very high accuracy as compared
+to FDM. Modern research allows as many as 200 different channels to share a single high capacityoptical fi ber line. In such a case, where a signifi cant number of input sources are combined into a
+single channel, we call it as Dense WDM (DWDM).
+The concept of WDM is illustrated in Fig. 3.25.
+</p>
+<figure>
+    <img src="img/l.png" alt="  "  class="center-image" height="500px" width="500px">
+</figure>
+</body>
+</html>
+
+

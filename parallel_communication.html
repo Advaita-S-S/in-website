@@ -1,0 +1,94 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallel Communication</title>
+    <style>
+        body {
+            font-family:'Times New Roman', Times, serif;
+            padding: 20px;
+            font-size: x-large;
+            line-height: 1.5;
+        }
+
+        h1 {
+            color: #061731;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: xx-large;
+
+        }
+
+        p {
+            line-height: 1.5;
+        }
+        .center-image {
+            display: block; /* Make the image a block element */
+            margin: 20px auto; /* Center the image with auto margins */
+            max-width: 50%; /* Optional: Set a maximum width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        /* Optional: Add styles as needed */
+    </style>
+</head>
+<body>
+    <h1>Parallel Communication :</h1>
+    <p>
+        In parallel communication, we transfer a word or
+        a byte at a time. Therefore, we need to have those
+        many wires parallel to each other, each carrying a
+        single bit. This is shown in Fig. 3.1, where eight
+        wires are transmitting a byte at a time. In this
+        example, the byte contains 10011001.
+    </p>
+    <figure>
+        <img src="img/1.png" alt="  "  class="center-image">
+    </figure>
+
+<p>
+    This is a very fast method of transmitting
+    data from one place to another. However, there
+    are problems in this scheme. Firstly, it is a very
+    expensive method because it requires several wires
+    as well as various sending and receiving equipment.
+    In addition, it demands extraordinary accuracy,
+    which cannot be guaranteed over long distances.
+    Digital pulses may not traverse at the same speed,because the underlying media through which the
+    data passes from one computer system to another
+    may not be absolutely or exactly identical. This gives
+    rise to the problem of skew as shown in Fig. 3.2.
+
+</p>
+<figure>
+        <img src="img/2.png" alt="  "  class="center-image">
+    </figure>
+<p>
+    When the skew happens, the bits 10011001 are
+sent from the source to the destination, but they
+traverse at different speeds. At the destination, the
+measurements of signal values to determine whether
+it was a bit 0 or 1 have to be done at the same time
+for all the bits. Therefore, the problem of skew can
+result in an inaccurate interpretation of bits.
+</p>
+<p>
+    To avoid this problem, parallel transmission is
+used only for a very short distance and there too,
+all parallel wires have to be absolutely identical.
+This method is used for data transmission within
+the computer system such as from the CPU registers
+to the memory or vice versa through the data bus.
+The data bus essentially implements the parallel
+transmission of data. This is done because speed,
+rather than cost, is of paramount importance in
+this case. However, due to the problems outlined above, one cannot use this method over long
+distances.
+</p>
+</body>
+</html>
+
+

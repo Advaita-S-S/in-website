@@ -1,0 +1,96 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serial Communication</title>
+    <style>
+        body {
+            font-family:'Times New Roman', Times, serif;
+            padding: 20px;
+            font-size: x-large;
+            line-height: 1.5;
+        }
+
+        h1 {
+            color: #061731;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: xx-large;
+
+        }
+
+        p {
+            line-height: 1.5;
+        }
+        .center-image {
+            display: block; /* Make the image a block element */
+            margin: 20px auto; /* Center the image with auto margins */
+            max-width: 50%; /* Optional: Set a maximum width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        /* Optional: Add styles as needed */
+    </style>
+</head>
+<body>
+    <h1>Serial Communication :</h1>
+    <p>
+        Over long distances, serial communication
+        is used. While sending the data serially,
+        characters or bytes have to be separated
+        out and sent bit by bit. Thus, there is some
+        hardware equipment involved in converting
+        the data from parallel to serial. At the
+        destination, the measurement of signal values
+        is done in the middle of the bit durations as
+        shown in Fig. 3.3. This is because, if the
+        values are taken at the edge or a point where
+        the bit value changes (shown as point A in the fi gure), the reading will be indeterminate.
+        At the destination, all the bits are collected, measured and put together as bytes in the memory
+        of the destination. This requires conversion from serial to parallel.
+    </p>
+    <figure>
+        <img src="img/3.png" alt="  "  class="center-image" height="400px" width="400px">
+    </figure>
+
+<p>
+    In serial data transmission, we have to identify where the character starts. We have to also
+identify the middle position of each bit interval so that measurement can be taken. Normally, the
+transmitter and the receiver have two different clocks. The point is to synchronize the clock of
+the receiver exactly with that of the transmitter, so that correct readings result and the bit values
+are understood correctly. This is essentially a problem of synchronization. We can illustrate this
+through an example.Let us say that we have to send 8 bits b0 to b7 from point X to point Y as shown in Fig. 3.4. We
+have arranged the bits in a circular fashion to illustrate the point better. Let us say that arms A1
+and A2 at point X and Y rotate in clockwise directions. When both A1 and A2 point to the bit b0 at
+X and Y respectively, the connection is made and the bit b0 is transferred from X to Y. Now due to
+rotation, after some time, A1 will point towards b1 at point X. At that time A2 also has to point to
+b1
+,
+at point Y, otherwise the bit will not be transferred correctly. The same is true for the transfer of
+b2 through b7 as A1 and A2 rotate clockwise. Therefore, the two arms shown as A1 and A2 have to
+be perfectly synchronized and they have to rotate at the same speed in order to succeed in sending
+and receiving all the bits accurately.
+</p>
+<p>
+    In order to achieve this, initially, we have to adjust and synchronize the clocks in the electronics
+of the source and the destination. There are three approaches in which this can be achieved. These
+are asynchronous, synchronous and isochronous transmission. We will look at them very shortly.
+</p>
+<figure>
+        <img src="img/4.png" alt="  "  class="center-image">
+    </figure>
+<p>
+    A line adapter or interface generally achieves this task of synchronization. It achieves a few
+    other things also. We will call it only "serial interface" in this text.
+    Electronics devices called Universal Asynchronous Receiver Transmitter (UART) and
+    Universal Synchronous Asynchronous Receiver Transmitter (USART) are examples of such
+    an interface. USART can be used for both the asynchronous and synchronous transmission. On the
+    other hand, UART is used only when the transmission is asynchronous.
+</p>
+</body>
+</html>
+
+

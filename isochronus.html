@@ -1,0 +1,62 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isochronous Communication</title>
+    <style>
+        body {
+            font-family:'Times New Roman', Times, serif;
+            padding: 20px;
+            font-size: x-large;
+            line-height: 1.5;
+        }
+
+        h1 {
+            color: #061731;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: xx-large;
+
+        }
+
+        p {
+            line-height: 1.5;
+        }
+        .center-image {
+            display: block; /* Make the image a block element */
+            margin: 20px auto; /* Center the image with auto margins */
+            max-width: 50%; /* Optional: Set a maximum width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        /* Optional: Add styles as needed */
+    </style>
+</head>
+<body>
+    <h1>Isochronous Communication :</h1>
+    <p>
+        This method combines various approaches of asynchronous and synchronous communications.
+         In  this method, as in asynchronous method, each character has both start and stop bits. 
+         However in  isochronous method, the idle period between the two characters cannot be random. 
+         For instance, all  idle periods of no transmission consist of exact multiple of 1 character time interval. 
+        Therefore, if  the time to transmit a character (including its parity, start, stop bits) is t, the time interval between 
+         characters cannot be random as in the asynchronous method. It is also not 0 as in the synchronous  method. 
+         It has to be t, 2t, 3t ... nt where n is a positive integer in isochronous communication. Figure  3.10 depicts 
+         the differences between the three approaches. 
+
+    </p>
+
+<p>
+    The main reason for using isochronous method over asynchronous method is speed. 
+    In practice,  asynchronous transmission is limited to a data rate of 2,400 bits per second as per
+     the timing precision  of the transmitting and receiving modems. By contrast, isochronous transmission
+      can achieve data rates  of up to 19,200 bits per second. 
+
+</p>
+</body>
+</html>
+
+

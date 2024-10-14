@@ -1,0 +1,178 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERROR DETECTION</title>
+    <style>
+        body {
+            font-family:'Times New Roman', Times, serif;
+            padding: 20px;
+            font-size: x-large;
+            line-height: 1.5;
+        }
+
+        h1 {
+            color: #061731;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: xx-large;
+
+        }
+
+        p {
+            line-height: 1.5;
+        }
+        .center-image {
+            display: block; /* Make the image a block element */
+            margin: 20px auto; /* Center the image with auto margins */
+            max-width: 50%; /* Optional: Set a maximum width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        /* Optional: Add styles as needed */
+    </style>
+</head>
+<body>
+    <h1>ERROR DETECTION</h1>
+    <p>
+        There are a number of techniques used for transmission error detection and correction. We shall
+        examine the most common techniques used for this purpose, as described below.
+    </p>
+
+<p>
+    <b> Checksum</b>
+</p>
+<p>
+    A checksum, also called hash sum is fi xed-length data that is the result of performing certain
+    operations on the data to be sent from the sender to the receiver. The sender runs the appropriate
+    checksum algorithm to compute the checksum of the data, appends it as a fi eld in the packet that
+    contains the data to be sent, as well as various headers. When the receiver receives the data, the
+    receiver runs the same checksum algorithm to compute a fresh checksum. The receiver compares
+    this freshly computed checksum with the checksum that was computed by the sender. If the two
+    checksums match, the receiver of the data is assured that the data has not changed unintentionally
+    during transit.
+</p>
+<p>
+    Various checksum algorithms are popular. Most common examples of these are parity check,
+modular sum, position-dependent checksum, etc. We describe parity check in the following
+section. Later, we will also discuss the Cyclic Redundancy Check (CRC), which is an example
+of position-dependent checksum. As such, we shall cover the modular sum technique too, in brief
+here.
+In modular sum, the data that the sender is sending is arranged into smaller blocks, called words.
+For example, if the data stream that needs to be sent is 11001000111111100110, then we may consider
+that this is made up of 5 words, each containing 4 bits. That is, the 5 words are 1100, 1000, 1111,
+1110, and 0110. These are simply added together as follows:
+</p>
+<figure>
+        <img src="img/0.png" alt="  "  class="center-image" height="400px" width="400px">
+    </figure>
+<p>
+    As we can see, the result is 111001. Then a 2’s complement of the result is found, which is equal
+to 000111. This value is considered as the checksum and is sent along with the data. The receiver
+computes a fresh checksum and compares it with this received checksum. If the two checksum
+values tally, the receiver considers that the data was received without any errors or alterations.
+Sometimes, extra carry bits resulting while adding the numbers together are discarded. This
+means that the sum of the numbers would be reduced from 111001 to 1001, taking just the last two
+digits. We would then fi nd out the 2’s complement of that result, which would be 0111. This would
+be our checksum in that case.
+</p>
+<p>
+    <b> Vertical Redundancy Check (VRC) or Parity Check</b>
+</p>
+<p>
+    Vertical Redundancy Check (VRC), also known as parity check, is quite simple to understand.
+It is the least expensive technique. In this method, the sender appends a single additional bit, called
+the parity bit, to the message before transmitting it. There are two schemes in this, viz., odd parity
+and even parity. In the odd parity scheme, given some bits, an additional parity bit is added in such
+a way that the number of 1s in the bits inclusive of the parity bit is odd. In even parity scheme, the
+parity bit is added such that the number of 1s inclusive of the parity bit is even.
+</p>
+<p>
+    For example, consider a message string 1100011 that needs to be transmitted. Let us assume the
+even parity scheme. The following will now happen:
+<ul>
+    <li>The sender examines this message string, and notes that the number of bits containing a value
+        1 in this message string is 4. Therefore, it adds an extra 0 (so that the number of 1s in the bit
+        string continues to be even) to the end of this message. This extra bit is called a parity bit.
+        This is done by the hardware itself. That is why, it is very fast.</li>
+        <li>
+            The sender sends the original bits 1100011 and the additional parity bit 0 together to the
+receiver.
+        </li>The receiver separates the parity bit from the original bits, and it also examines the original
+        bits. It sees the original bits as 1100011, and notes that the number of 1s in the message is
+        four, i.e., even.
+            <li>
+                The receiver now computes the parity bit again and compares this computed parity bit with
+the 0 parity bit received from the sender, it notes that they are equal, and accepts the bit string
+as correct. This is also done by the hardware itself.
+            </li>
+</ul>
+This process is shown in Fig. 4.3.
+In contrast, if the original message was 1010100, the number of 1s in the message would have
+been three (odd), and therefore, the parity bit would have contained a 1.
+Clearly, parity checking can detect single-bit errors. However, if multiple bits of a message are
+changed due to an error (burst), parity checking would not work. Better schemes are required to
+trap burst errors.
+</p>
+<figure>
+    <img src="img/i.png" alt="  "  class="center-image" height="400px" width="400px">
+</figure>
+<p>
+    As mentioned earlier, there is one problem with this scheme. This scheme can only catch a single-bit
+error. If two bits reverse, this scheme will fail. For instance, if the fi rst two bits in the bit stream shown
+in Fig. 4.3 change, we will get a stream 0000011, yielding a parity bit of 0 again, fooling us.
+</p>
+<p>
+    <b>Longitudinal Redundancy Check (LRC)</b>
+</p>
+<p>
+    A block of bits is organized in the form of a list (as rows) in the Longitudinal Redundancy Check
+(LRC). Here, for instance, if we want to send 32 bits, we arrange them into a list of four rows. Then the parity bit for each column is calculated and a new row of eight bits is created. These become
+the parity bits for the whole block. An example of LRC is shown in Fig. 4.4.
+</p>
+<figure>
+    <img src="img/h.png" alt="  "  class="center-image" height="400px" width="400px">
+</figure>
+<p><b> Cyclic Redundancy Check (CRC)</b></p>
+<p>
+    In Cyclic Redundancy Check (CRC), a sequence of otherwise redundant overhead bits called
+CRC or CRC remainder is added to the end of the data to be transmitted. The CRC is so calculated
+that it can be perfectly divided by a second predecided number. At the receiver, the arriving data is
+divided by the same predecided number. If this division produces a zero remainder, the transmission
+is considered as error-free. In such a case, the incoming data is accepted by the receiver. If there
+is a remainder, it means that the transmission is in error and therefore, the arriving data must be
+rejected. At a broad level, the process is shown in Fig. 4.5. The main features of CRC are as follows:
+<ul>
+    <li>The question is why is CRC a better error detection method? Like in the case of VRC, if two
+        adjacent bits change, will the CRC be the same, fooling us? The answer is no. The algorithm
+        to compute the CRC is so chosen that given the length of the data block in bits, there are
+        only a few and fi nite number of permutations and combinations for which the CRC is the
+        same. The possibilities are also normally such that you have to inverse a number of specifi c
+        and distant bits (e.g., 1, 43, 91, etc.) to get the same CRC (which can fool us). As we know,
+        normally, errors occur in a burst, causing many consecutive bits and rarely exactly the bits
+        required to get the same CRC. This is what makes CRC a very sturdy method.</li>
+        <li>CRC is normally implemented in the hardware (of the modem), rather than in the software.
+            This makes this operation very fast, though a little more expensive. Depending upon the
+            method of CRC used, the corresponding type of modem has to be used. For computing the
+            CRC, two simple hardware components are used, viz., an XOR gate and a shift register. Using
+            a combination of these two, we can calculate the CRC for any data to be sent. The method
+            of actual calculation of CRC is beyond the scope of this text.</li>
+</ul>
+</p>
+<figure>
+    <img src="img/k.png" alt="  "  class="center-image" height="400px" width="400px">
+</figure>
+<p>
+    <ul>
+        <li>Data to be transmitted is divided in a number of blocks consisting of several bits each.
+            Thereafter, a block is treated as a mammoth string of 1s and 0s in a binary number. It is then
+            divided by a prime number, and the remainder is again treated as CRC.</li>
+    </ul>
+</p>
+</body>
+</html>
+
+

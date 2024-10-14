@@ -1,0 +1,139 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synchronous Communication</title>
+    <style>
+        body {
+            font-family:'Times New Roman', Times, serif;
+            padding: 20px;
+            font-size: x-large;
+            line-height: 1.5;
+        }
+
+        h1 {
+            color: #061731;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: xx-large;
+
+        }
+
+        p {
+            line-height: 1.5;
+        }
+        .center-image {
+            display: block; /* Make the image a block element */
+            margin: 20px auto; /* Center the image with auto margins */
+            max-width: 50%; /* Optional: Set a maximum width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        /* Optional: Add styles as needed */
+    </style>
+</head>
+<body>
+    <h1>Synchronous Communication :</h1>
+    <p>
+        In synchronous transmission, the whole block of data bits is transferred at once, instead of one
+character at a time. The block of bits may or may not consist of different characters. It could as well
+be a digitized image. It could be anything. In this case, we need a bit oriented protocol between
+the sender and the receiver. If the block of bits consists of different characters, the receiver needs
+to know the beginning of the fi rst bit of the fi rst character. It then can start its clock and sampling
+to determine the bit values. Knowing the number of bits per character, it can now recognize the
+character and store them at the destination. This is shown in Fig. 3.6. In this case, we need to have
+a byte oriented protocol between the sender and the receiver.
+
+    </p>
+    <figure></figure>
+        <img src="img/6.png" alt="  "  class="center-image">
+    </figure>
+
+<p>
+    The point is how does the receiver know the fi rst bit of the fi rst character, or when to start the
+    clock for sampling? In order to perform this synchronization, each data block is preceded with a
+    unique synchronizing bit pattern. We use the SYN (abbreviation for synchronize) transmission
+    control character for this. It has a bit pattern of 00101101. This bit pattern is generally not used in
+    any normal communication. Therefore, this SYN character can be reserved for indicating the start
+    of the block, i.e., for synchronization.
+</p>
+<p>
+    However, there is a problem in this scheme. The transmitter will not send a SYN character as a
+part of data characters. However, by mistake, the bit pattern of two characters could be such that if
+sent one after the other, they can constitute a SYN character, thereby fooling the receiver. Figure
+3.7 illustrates this case. In this case, if ASCII character b and a are sent one after the other, we get a
+bit combination of 4 bits from the ASCII character b and 3 bits for ASCII character a to constitute
+the SYN character.
+</p>
+<figure></figure>
+<img src="img/7.png" alt="  "  class="center-image">
+</figure>
+<p>
+    At the receiving end, if the receiver is all the time looking for SYN characters, it can get fooled.
+It is for this reason that normally two SYN bytes are sent consecutively. The bit combination of two
+SYN bytes, i.e., 00101100010110 cannot be obtained by concatenating any characters. Therefore,
+the receiver is asked to look for two SYN characters. If not found, s/he is asked to throw them off. In some systems even three or four SYN characters are sent to make sure that proper synchronization
+takes place. The receiver gets ready after receiving the required SYN character(s) and then starts
+its clock for measuring the bit values for the actual data. This is shown in Fig. 3.8.
+</p>
+<figure></figure>
+<img src="img/8.png" alt="  "  class="center-image">
+
+</figure>
+<p>
+    When the clock starts measuring the bit values, the counter within a receiver is incremented for every
+bit received and measured and pushed into the character assembler within the receiver. This is as shown in
+Fig. 3.9.
+After a character is assembled, the character is moved to a separate buffer and the bit counter is
+set to 0 to prepare for the next character. In the case of synchronous transmission, the equipment
+used at both the ends is called Universal Synchronous/Asynchronous Receiver Transmitter (USART).
+This is responsible for converting the data from parallel to serial at the transmitters end and from
+serial to parallel at the receivers end. It is also responsible for generating the SYN characters at
+the beginning of the data blocks, before transmission and recognizing them at the receiving end as
+shown in Fig. 3.9.
+</p>
+<figure></figure>
+<img src="img/9.png" alt="  "  class="center-image">
+</figure>
+<p>
+    Synchronous communication is used when a large amount of data is to be sent from one place
+    to the other. Synchronous transmission has obviously a much higher effi ciency because it is a
+    continuous transmission, without any start/stop bits. For example, if we have to transmit a fi le
+    of 100,000 characters at a rate of 9.6 Kbps, the overheads for asynchronous and synchronous
+    communication will be as follows:
+</p>
+<ul>
+    <li><b> 1. Asynchronous Communication :</b> </li>
+</ul>
+<p>
+    Let us assume that for each character of 8 bits, 1 start and 1 stop bit are sent. Thus, at 2 bits/
+character as overhead, we will have to send an overhead of (extra bits) of:
+<ul>
+<li> 2 bits/character * 100,000 characters = 200,000 bits</li>
+<li> At 9600 bits/seconds, it will take 200,000 / 9600 = 20.83 seconds more for the overhead bits</li>
+</ul>
+</p>
+<ul>
+    <li><b>2. Synchronous Communication :   </b> </li>
+</ul>
+<p>
+    We assume that the fi le of 100,000 characters is broken into blocks of 1200 characters = 9600
+bits. We will assume that 48 overhead bits are sent along with each block. (For SYN (synchronize)
+STX (start of transmission), ETX (end of transmission) and other characters). The overhead is now
+computed as follows:
+<ul>
+    <li> The number of blocks = 100,000 / 1200 = 250 / 3</li>
+    <li> Numbers of overhead bits = 250 / 3 * 48 = 4000 bits</li>
+    <li> The time taken to send overhead bits at 9600 bps;
+        = 4000 / 9600 seconds = 0.4167 seconds</li>
+</ul>
+Thus, the time taken for asynchronous communication is much higher, and in this case, 50
+times!
+</p>
+</body>
+</html>
+
+
